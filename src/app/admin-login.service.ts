@@ -5,15 +5,15 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class DepartmentService {
+export class AdminLoginService {
 apiUrl = 'http://192.168.0.34:3000';
 //  apiUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) { }
 
-   addDepartment(data: any): Observable<any> {
+   signin(data: any): Observable<any> {
     return this.http.post(
-      `${this.apiUrl}/api/addDepartment`,
+      `${this.apiUrl}/api/login`,
       data
     );
   }

@@ -54,39 +54,71 @@
         Sign in to continue
       </p>
 
-      <div class="input-group">
-        <input
-          type="email"
-          placeholder="Email Address">
-      </div>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
-      <div class="input-group">
-        <input
-          type="password"
-          placeholder="Password">
-      </div>
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
 
-      <div class="options">
-        <label>
-          <input type="checkbox">
-          Remember Me
-        </label>
+          <input type="email" placeholder="Email Address" formControlName="email">
 
-        <a href="#">Forgot Password?</a>
-      </div>
+        </div>
 
-      <button class="login-btn">
-        Sign In →
-      </button>
+        <small class="error" *ngIf="f['email'].touched && f['email'].errors?.['required']">
+          Email is required
+        </small>
+
+        <small class="error" *ngIf="f['email'].touched && f['email'].errors?.['email']">
+          Enter a valid email
+        </small>
+
+        <div class="input-group">
+
+          <i class="fas fa-lock"></i>
+
+          <input [type]="hidePassword ? 'password' : 'text'" placeholder="Password" formControlName="password">
+
+          <i class="fas" [ngClass]="hidePassword ? 'fa-eye' : 'fa-eye-slash'" (click)="hidePassword=!hidePassword"
+            style="cursor:pointer;right:20px;left:auto;">
+          </i>
+
+        </div>
+
+        <small class="error" *ngIf="f['password'].touched && f['password'].errors?.['required']">
+          Password is required
+        </small>
+
+        <small class="error" *ngIf="f['password'].touched && f['password'].errors?.['minlength']">
+          Minimum 6 characters
+        </small>
+
+        <div class="options">
+
+          <label>
+
+            <input type="checkbox" formControlName="rememberMe">
+
+            Remember Me
+
+          </label>
+
+          <a href="#">Forgot Password?</a>
+
+        </div>
+
+        <button type="submit" class="login-btn">
+          Sign In →
+        </button>
+
+      </form>
 
       <div class="divider">
         OR
       </div>
 
       <div class="social-login">
-        <button>G</button>
-        <button>f</button>
-        <button>⊞</button>
+        <button><i class="fab fa-google"></i></button>
+        <button><i class="fab fa-facebook-f"></i></button>
+        <button><i class="fab fa-linkedin-in"></i></button>
       </div>
 
     </div>
