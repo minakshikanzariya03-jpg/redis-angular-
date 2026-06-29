@@ -174,3 +174,9 @@ body{
   color:white;
   font-size:20px;
 }
+
+/* git checkout -b feature/auth
+# Make changes
+git add .
+git commit -m "Add authentication page"
+git push -u origin feature/auth */
