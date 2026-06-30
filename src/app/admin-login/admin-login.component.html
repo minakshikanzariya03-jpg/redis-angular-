@@ -3,6 +3,7 @@
   <div class="left-section">
 
     <div class="content">
+
       <span class="badge">
         ⭐ #1 Real Estate Management
       </span>
@@ -54,43 +55,66 @@
         Sign in to continue
       </p>
 
-      <div class="input-group">
-        <input
-          type="email"
-          placeholder="Email Address">
-      </div>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
-      <div class="input-group">
-        <input
-          type="password"
-          placeholder="Password">
-      </div>
+        <div class="input-group">
+          <input
+            type="email"
+            placeholder="Email Address"
+            formControlName="email">
+        </div>
 
-      <div class="options">
-        <label>
-          <input type="checkbox">
-          Remember Me
-        </label>
+        <small
+          *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
+          Enter a valid email.
+        </small>
 
-        <a href="#">Forgot Password?</a>
-      </div>
+        <div class="input-group">
+          <input
+            type="password"
+            placeholder="Password"
+            formControlName="password">
+        </div>
 
-      <button class="login-btn">
-        Sign In →
-      </button>
+        <small
+          *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+          Password is required.
+        </small>
+
+        <div class="options">
+
+          <label>
+            <input
+              type="checkbox"
+              formControlName="rememberMe">
+            Remember Me
+          </label>
+
+          <a href="#">Forgot Password?</a>
+
+        </div>
+
+        <button
+          class="login-btn"
+          type="submit"
+          [disabled]="loginForm.invalid">
+          Sign In →
+        </button>
+
+      </form>
 
       <div class="divider">
         OR
       </div>
 
       <div class="social-login">
-        <button>G</button>
-        <button>f</button>
-        <button>⊞</button>
+        <button type="button">G</button>
+        <button type="button">f</button>
+        <button type="button">⊞</button>
       </div>
 
     </div>
 
   </div>
 
-</div>
+</div>s
